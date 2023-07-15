@@ -1,5 +1,5 @@
-const { application } = require('express');
-const {Thought, User} = require('../models');
+// const { Thought } = require('express');
+const {Thoughts, User} = require('../models');
 
 module.exports = {
     //here we will be invoking all fo the functions, then we will  return the results in a JSON 

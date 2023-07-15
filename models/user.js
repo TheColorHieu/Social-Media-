@@ -33,10 +33,10 @@ const userSchema = new Schema(
 
 //next we will be creating a virtual property of fullname that gets and sets the users name
 userSchema
-.virtuals('fullName')
+.virtual('fullName')
 //our getter
 .get(function () {
-    return `${this.first} ${this.last}`;
+    return `${this.firstName} ${this.lastName}`;
 })
 //this is our setter
 .set(function (v) {
