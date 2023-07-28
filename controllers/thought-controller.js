@@ -1,5 +1,5 @@
 // const { Thought } = require('express');
-const {Thoughts, User} = require('../models');
+const {Thoughts, Reaction} = require('../models');
 
 module.exports = {
     //here we are getting all tof the thoughts 
@@ -65,13 +65,14 @@ module.exports = {
         try{
             const thoughts = await Thoughts.findOneAndUpdate(
                 { _id: req.params.thoughtId },
-                { $push: { reactions: req.body} },
+                { $set: { reactions: req.body} },
                 { runValidators: true, new: true}
             );
             if(!thoughts) {
                 return res.status(404).json({ message: 'No thought with this id'});
+            } else {
+            res.json({message: "Reaction successfully added!"});
             }
-            res.json(thoughts);
         } catch (err) {
             res.status(500).json(err);
         }
